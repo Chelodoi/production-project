@@ -4,7 +4,7 @@
     "noImplicitAny": true, //подсвечивает все места где не указан тип
     "module": "ESNext",
     "target": "es5", // в какую версию ecmaScript будет компилироваться код
-    "jsx": "react", //понимает конструкции JSX React
+    "jsx": "react-jsx", //понимает конструкции JSX React
     "allowJs": true, //компилятор обрабатывает не только ts но и js
     "moduleResolution": "node", //определяет какие импорты будут node/classic
     //esModuleInterop позволяет работать с пакетамиб которые используют
