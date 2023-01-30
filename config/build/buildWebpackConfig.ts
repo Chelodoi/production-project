@@ -3,9 +3,10 @@ import { BuildOptions } from './types/config';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
 import { buildResolvers } from './buildResolvers';
+import { buildDevServer } from './buildDevServer';
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-  const { paths, mode } = options;
+  const { paths, mode, isDev } = options;
   return {
     mode,
     entry: paths.entry, //старт приложения
@@ -15,10 +16,13 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
       path: paths.build,
       clean: true,
     },
+
     plugins: buildPlugins(options),
     module: {
       rules: buildLoaders(), //правила loader предназначены для обработки не JS файлов
     },
     resolve: buildResolvers(),
+    devtool: isDev ? 'inline-source-map' : undefined,
+    devServer: isDev ? buildDevServer(options) : undefined,
   };
 }
