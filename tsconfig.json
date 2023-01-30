@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/", // куда собирается сборка
+    "noImplicitAny": true, //подсвечивает все места где не указан тип
+    "module": "ESNext",
+    "target": "es5", // в какую версию ecmaScript будет компилироваться код
+    "jsx": "react", //понимает конструкции JSX React
+    "allowJs": true, //компилятор обрабатывает не только ts но и js
+    "moduleResolution": "node", //определяет какие импорты будут node/classic
+    //esModuleInterop позволяет работать с пакетамиб которые используют
+    //CommonJS(require module.export) как с обычными пакетами с помощью import
+    "esModuleInterop": true,
+    //если какая нибудь библиотека не имеет default export
+    //loaderы тс или бабель автоматически создают их
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
