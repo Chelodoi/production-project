@@ -4,14 +4,14 @@ import { LOCAL_STORAGE_KEY_THEME, ThemeContext, ThemeType } from '../lib/ThemeCo
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_KEY_THEME) as ThemeType) || 'light';
 
 export const ThemeProvider: FC = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeType>(defaultTheme);
+    const [theme, setTheme] = useState<ThemeType>(defaultTheme);
 
-  const defaultProps = useMemo(
-    () => ({
-      theme: theme,
-      setTheme: setTheme,
-    }),
-    [theme]
-  );
-  return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
+    const defaultProps = useMemo(
+        () => ({
+            theme,
+            setTheme,
+        }),
+        [theme],
+    );
+    return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
 };

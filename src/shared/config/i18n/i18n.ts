@@ -6,18 +6,18 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
 
-  .use(Backend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: 'ru', //язык по умолчанию
-    debug: __IS_DEV__,
-    backend: <BackendOptions>{
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
-    },
-    interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
-  });
+    .use(Backend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: 'ru', // язык по умолчанию
+        debug: __IS_DEV__,
+        backend: <BackendOptions>{
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
+        },
+        interpolation: {
+            escapeValue: false, // not needed for react as it escapes by default
+        },
+    });
 
 export default i18n;
