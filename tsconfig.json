@@ -9,7 +9,10 @@
     "moduleResolution": "node", //определяет какие импорты будут node/classic
     //esModuleInterop позволяет работать с пакетамиб которые используют
     //CommonJS(require module.export) как с обычными пакетами с помощью import
-    // "baseUrl": ".", //Для абсолютного импорта
+    "baseUrl": ".", //Для абсолютного импорта
+    "paths": {
+      "*": ["./src/*"]
+    },
     "esModuleInterop": true,
     //если какая нибудь библиотека не имеет default export
     //loaderы тс или бабель автоматически создают их

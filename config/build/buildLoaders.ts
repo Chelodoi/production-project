@@ -8,6 +8,30 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     use: 'ts-loader', //какой loader используется для этого
     exclude: /node_modules/, // исключения
   };
+
+  const svgLoader = {
+    test: /\.svg$/,
+    use: [{ loader: '@svgr/webpack', options: { icon: true } }],
+  };
+  const babelLoader = {
+    test: /\.(ts|tsx|jsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+        plugins: [
+          ['i18next-extract', { locales: ['ru', 'en'], keyAsDefaultValue: true }],
+          // […] your other plugins […]
+        ],
+      },
+    },
+  };
+  const fileLoader = {
+    test: /\.(png|jpg|jpeg|gif)$/i,
+    type: 'asset/resource',
+  };
+
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -24,5 +48,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
       'sass-loader',
     ],
   };
-  return [typescriptLoader, scssLoader];
+  return [fileLoader, svgLoader, babelLoader, typescriptLoader, scssLoader];
 }
