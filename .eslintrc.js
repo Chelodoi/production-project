@@ -6,13 +6,11 @@ module.exports = {
     extends: ['plugin:react/recommended', 'airbnb'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
+        ecmaFeatures: { jsx: true },
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint'],
+    plugins: ['react', '@typescript-eslint', 'i18next'],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -31,8 +29,27 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 1,
         'no-underscore-dangle': 'off',
+        'max-len': ['error', { code: 120 }],
+        'object-curly-newline': [
+            'error',
+            {
+                ObjectExpression: {
+                    consistent: true,
+                    multiline: true,
+                },
+                ObjectPattern: {
+                    consistent: true,
+                    multiline: true,
+                },
+                ImportDeclaration: 'never',
+                ExportDeclaration: {
+                    multiline: true,
+                    minProperties: 3,
+                },
+            },
+        ],
+        'object-property-newline': 'error',
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to'] }],
     },
-    globals: {
-        __IS_DEV__: true,
-    },
+    globals: { __IS_DEV__: true },
 };

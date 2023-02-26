@@ -12,9 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 // eslint-disable-next-line react/function-component-definition
 export const Button: FC<ButtonProps> = (props) => {
-    const {
-        className, children, theme, ...otherProps
-    } = props;
+    const { className, children, theme, ...otherProps } = props;
     return (
         <button
             type="button"
